@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecoderCU - Chrome Extension</title>
+    <link rel="stylesheet" href="https://infernoidpl4y.github.io/frameworks/CSS/servus_bug_bounty_styles_1_0.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a5568;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .github-btn {
+            background: #333;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .github-btn:hover {
+            background: #555;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Features */
+        .features {
+            background: white;
+            padding: 4rem 0;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Versions */
+        .versions {
+            background: #f8fafc;
+            padding: 4rem 0;
+        }
+
+        .version-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .version-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+
+        /* Download */
+        .download {
+            background: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #48bb78;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background 0.3s, transform 0.3s;
+            margin: 1rem;
+        }
+
+        .download-btn:hover {
+            background: #38a169;
+            transform: scale(1.05);
+        }
+
+        .chrome-icon {
+            font-size: 1.5rem;
+        }
+
+        .install-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-icon">🔓</span>
+                    <span>DecoderCU</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#features">Características</a></li>
+                        <li><a href="#versions">Versiones</a></li>
+                        <li><a href="#download">Descargar</a></li>
+                        <li><a href="#about">Acerca de</a></li>
+                    </ul>
+                </nav>
+                <a href="https://github.com/InfernoidPl4y/DecoderCU" target="_blank" class="github-btn">
+                    <span>⭐</span> GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>DecoderCU</h1>
+            <p>Una poderosa extensión para Chrome que decodifica y codifica entre múltiples formatos: Binary, Base64 y URL encoding.</p>
+            <div class="hero-badge">
+                <span>Versión actual: 1.0</span>
+                <span>•</span>
+                <span>Manifest V3</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Características Principales</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔤</div>
+                    <h3>Decodificador Base64</h3>
+                    <p>Convierte texto codificado en Base64 a texto plano de forma instantánea. Perfecto para trabajar con datos codificados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Decodificador URL</h3>
+                    <p>Decodifica URLs con caracteres especiales y porcentajes. Ideal para analizar parámetros de URL y datos web.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Decodificador Binario</h3>
+                    <p>Convierte cadenas binarias (010101) a texto legible. Esencial para trabajos de informática y seguridad.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Codificación Inversa</h3>
+                    <p>No solo decodifica, también codifica texto a estos formatos. Una herramienta completa para desarrolladores.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Interfaz Intuitiva</h3>
+                    <p>Diseño limpio y fácil de usar con la estética de herramientas de bug bounty que conoces y amas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Seguro y Local</h3>
+                    <p>Todos los cálculos se realizan localmente en tu navegador. Tus datos nunca salen de tu computadora.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Versions -->
+    <section id="versions" class="versions">
+        <div class="container">
+            <h2 class="section-title">Historial de Versiones</h2>
+            
+            <div class="version-card">
+                <div class="version-header">
+                    <h3>Versión 1.0</h3>
+                    <span class="version-tag">Actual</span>
+                </div>
+                <p><strong>Fecha de lanzamiento:</strong> Diciembre 2023</p>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>Lanzamiento inicial de DecoderCU</li>
+                    <li>Soporte para Base64, URL y Binary encoding/decoding</li>
+                    <li>Interfaz de usuario optimizada para popup de Chrome</li>
+                    <li>Integración con Manifest V3</li>
+                    <li>Diseño responsivo y moderno</li>
+                </ul>
+            </div>
+
+            <div class="version-card">
+                <div class="version-header">
+                    <h3>Próximas Actualizaciones</h3>
+                    <span class="version-tag">Planificado</span>
+                </div>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>Soporte para más formatos (Hex, ASCII, ROT13)</li>
+                    <li>Historial de conversiones</li>
+                    <li>Exportación de resultados</li>
+                    <li>Modo oscuro automático</li>
+                    <li>Atajos de teclado personalizables</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">Instalar DecoderCU</h2>
+            <p>Disponible exclusivamente para Google Chrome y navegadores basados en Chromium</p>
+            
+            <a href="#" class="download-btn" id="install-btn">
+                <span class="chrome-icon">🌐</span>
+                <span>Instalar desde Chrome Web Store</span>
+            </a>
+            
+            <p style="margin-top: 1rem; color: #718096;">
+                (Próximamente en Chrome Web Store - Actualmente solo para desarrolladores)
+            </p>
+
+            <div class="install-steps">
+                <div>
+                    <h4>📦 Instalación para Desarrolladores</h4>
+                    <ol style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li>Descarga el código desde GitHub</li>
+                        <li>Abre Chrome y ve a chrome://extensions/</li>
+                        <li>Activa el "Modo desarrollador"</li>
+                        <li>Haz clic en "Cargar extensión sin empaquetar"</li>
+                        <li>Selecciona la carpeta de la extensión</li>
+                    </ol>
+                </div>
+                <div>
+                    <h4>🔧 Requisitos</h4>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li>Google Chrome 88+</li>
+                        <li>Manifest V3 compatible</li>
+                        <li>Permisos de scripting</li>
+                        <li>Acceso a popup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="versions">
+        <div class="container">
+            <h2 class="section-title">Acerca del Proyecto</h2>
+            <div class="version-card">
+                <h3>👨‍💻 Desarrollador</h3>
+                <p><strong>InfernoidPl4y</strong> - Entusiasta de la seguridad informática y desarrollo de herramientas para bug bounty.</p>
+                
+                <h3 style="margin-top: 1.5rem;">🎯 Propósito</h3>
+                <p>DecoderCU nació de la necesidad de tener una herramienta rápida y accesible para trabajar con diferentes formatos de codificación durante pruebas de penetración y análisis de seguridad.</p>
+                
+                <h3 style="margin-top: 1.5rem;">📄 Licencia</h3>
+                <p>Este proyecto es de código abierto y está disponible bajo la licencia MIT. ¡Las contribuciones son bienvenidas!</p>
+                
+                <h3 style="margin-top: 1.5rem;">🤝 Contribuir</h3>
+                <p>Visita nuestro repositorio en GitHub para reportar bugs, solicitar características o contribuir al código.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🔓</span>
+                <span>DecoderCU</span>
+            </div>
+            <p>Binary, Base64, and URL decoder. Que más va a ser \(o_o)/</p>
+            
+            <div class="footer-links">
+                <a href="https://github.com/InfernoidPl4y" target="_blank">GitHub del Autor</a>
+                <a href="https://github.com/InfernoidPl4y/DecoderCU/issues" target="_blank">Reportar Bug</a>
+                <a href="#" id="contact-link">Contacto</a>
+            </div>
+            
+            <p style="margin-top: 2rem; color: #a0aec0; font-size: 0.875rem;">
+                © 2023 InfernoidPl4y. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Install button handler
+        document.getElementById('install-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('DecoderCU estará disponible pronto en Chrome Web Store.\n\nMientras tanto, puedes instalarla manualmente desde GitHub siguiendo las instrucciones para desarrolladores.');
+        });
+
+        // Contact link handler
+        document.getElementById('contact-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Para contactar al desarrollador:\n\nGitHub: https://github.com/InfernoidPl4y\n\nO abre un issue en el repositorio de DecoderCU.');
+        });
+
+        // Version highlight
+        const versionTags = document.querySelectorAll('.version-tag');
+        versionTags.forEach(tag => {
+            if(tag.textContent === 'Actual') {
+                tag.style.background = '#48bb78';
+            } else if(tag.textContent === 'Planificado') {
+                tag.style.background = '#ed8936';
+            }
+        });
+    </script>
+</body>
+</html>
