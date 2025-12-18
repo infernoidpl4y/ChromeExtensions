@@ -32,7 +32,7 @@ const about=document.querySelector("#btn-about").addEventListener('click', ()=>{
 		<p>
 			Autor: InfernoidPl4y<br>
 			Version: 1.0<br>
-			Web: decodecu.pythonanywhere.com
+			Web: decodercu.netlify.app
 			GitHub: github.com/InfernoidPl4y
 		</p>
 	`;
