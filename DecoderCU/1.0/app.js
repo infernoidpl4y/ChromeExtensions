@@ -31,7 +31,7 @@ const about=document.querySelector("#btn-about").addEventListener('click', ()=>{
 		<p class="terminal-user">root@IP4💀~$: cat /etc/about</p>
 		<p>
 			Autor: InfernoidPl4y<br>
-			Version: 1.0.0<br>
+			Version: 1.0<br>
 			Web: decodecu.pythonanywhere.com
 			GitHub: github.com/InfernoidPl4y
 		</p>

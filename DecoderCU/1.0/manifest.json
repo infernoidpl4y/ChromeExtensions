@@ -1,6 +1,6 @@
 {
 	"name": "DecoderCU",
-	"version": "1.0.0",
+	"version": "1.0",
 	"description": "Binary, Base64, and URL decoder. Que más va a ser \\(o_o)/",
 	"manifest_version": 3,
 	"author":"InfernoidPl4y",
