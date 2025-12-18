@@ -1,0 +1,15 @@
+{
+	"name": "DecoderCU",
+	"version": "1.0.0",
+	"description": "Binary, Base64, and URL decoder. Que más va a ser \\(o_o)/",
+	"manifest_version": 3,
+	"author":"InfernoidPl4y",
+	"action":{
+		"default_popup": "index.html",
+		"default_icon": "icon.png",
+		"default_title": "DecoderCU"
+	},
+	"permissions":[
+		"scripting"
+	]
+}
