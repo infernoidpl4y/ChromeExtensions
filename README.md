@@ -6,9 +6,10 @@ _Como pentester web, siempre sentí la necesidad de tener herramientas cotidiana
 _Herramienta para codificar y descodificar texto_
 | Version | Link | Codigo | 
 |---------|------|--------|
-|   1.0   | [![Descargar](https://img.shields.io/badge/RAR-Descargar-blue?logo=googlechrome)](https://github.com/infernoidpl4y/ChromeExtensions/raw/refs/heads/main/DecoderCU/1.0/DecoderCU.rar) | [![Descargar](https://img.shields.io/badge/Codigo-blue?logo=github)](https://github.com/infernoidpl4y/ChromeExtensions/DecoderCU/1.0/) |
-| Latest Release | [![Descargar](https://img.shields.io/badge/RAR-Descargar-blue?logo=googlechrome)](https://github.com/infernoidpl4y/ChromeExtensions/raw/refs/heads/main/DecoderCU/DecoderCU_latest_release.rar) | [![Descargar](https://img.shields.io/badge/Codigo-blue?logo=github)](https://github.com/infernoidpl4y/ChromeExtensions/DecoderCU/) |
+|   1.0   | [![Descargar](https://img.shields.io/badge/RAR-Descargar-blue?logo=googlechrome)](https://github.com/infernoidpl4y/ChromeExtensions/raw/refs/heads/main/DecoderCU/1.0/DecoderCU.rar) | [![Descargar](https://img.shields.io/badge/Codigo-blue?logo=github)](https://github.com/infernoidpl4y/ChromeExtensions/tree/main/DecoderCU/1.0/) |
+| Latest Release | [![Descargar](https://img.shields.io/badge/RAR-Descargar-blue?logo=googlechrome)](https://github.com/infernoidpl4y/ChromeExtensions/raw/refs/heads/main/DecoderCU/DecoderCU_latest_release.rar) | [![Descargar](https://img.shields.io/badge/Codigo-blue?logo=github)](https://github.com/infernoidpl4y/ChromeExtensions/tree/main/DecoderCU/) |
 
 [![WebSite](https://img.shields.io/badge/WebSite-green?logo=github)](https://decodercu.netlify.app/)
+
 
 
